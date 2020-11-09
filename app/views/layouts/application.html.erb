@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Pjmgmt</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+    <p class="notice"><%= notice %></p>
+    <p class="alert"><%= alert %></p>
+    <div class="container m-4">
+      <%= link_to "Home", root_path , class: "btn btn-sm btn-primary " %>
+      Welcome:
+      <% if user_signed_in? %>
+        <%= current_user.email %>
+        User: <%= current_user.id %>
+      <% end %>
+<hr>
+
+
+    <%= yield %>
+    </div>
+  </body>
+</html>
+
+

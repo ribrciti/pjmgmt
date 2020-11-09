@@ -1,0 +1,52 @@
+<div class="container m-4">
+  <p id="notice"><%= notice %></p>
+
+  <p>
+    <h3>
+      <%= @project.name %>
+    </h3>
+  </p>
+
+  <p>
+    <strong>Description:</strong>
+    <%= @project.description %>
+  </p>
+
+  <p>
+    <strong>User Id</strong>
+    <%= @project.user_id %>
+  </p>
+
+  <%= link_to 'Edit', edit_project_path(@project) %> |
+  <%= link_to 'Back', projects_path %>
+
+<div class="hline mb-2"></div>
+  <h3>Add New Tasks to <%= @project.name %></h3>
+
+  <%= render "tasks/form" %>
+
+<div class="hline"></div>
+
+<div class="container m-4">
+  <h3>Todo tasks</h3>
+   <%= link_to 'New Task', new_project_task_path(@project.id) , class: "btn btn-sm btn-success ml-2" %>
+   </p>
+
+  <% @project.tasks.each do |task| %>
+    <% if task.persisted? %>
+      <h5><%= task.name %></h5>
+      --<%= task.description %>
+      <%= task.status %>
+      <br>
+      <%= link_to 'Show', [task.project, task] %> |
+
+      <%= link_to 'Destroy', [task.project, task], method: :delete, data: { confirm: 'Are you sure?' } %>
+    <% end %>
+  <% end %>
+  </table>
+
+  <br/>
+
+
+</div>
+
